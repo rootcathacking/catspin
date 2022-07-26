@@ -1,0 +1,97 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Spins up catspin as Api Gateway proxy'
+Parameters:
+  uri:
+    Type: String
+    Description: give uri of target system plz
+    Default: ''
+
+Resources:
+  ApiGatewayApi:
+    Type: AWS::ApiGateway::RestApi
+    Properties:
+      Body:
+        swagger: 2.0
+        info:
+          title: !Join ['', [!Ref 'AWS::StackName', '-api']]
+          version: 2016-09-02T22:37:24Z
+        basePath: /catspin
+        schemes:
+        - https
+        paths:
+          /:
+            get:
+              parameters:
+              - name: "X-My-X-Forwarded-For"
+                in: "header"
+                required: false
+                type: "string"
+              - name: "proxy"
+                in: "path"
+                required: true
+                type: "string"
+              responses: {}
+              x-amazon-apigateway-integration:
+                httpMethod: "ANY"
+                uri: !Sub 'http://${uri}/'
+                responses:
+                  default:
+                    statusCode: "200"
+                requestParameters:
+                  integration.request.path.proxy: "method.request.path.proxy"
+                  integration.request.header.X-Forwarded-For: "method.request.header.X-My-X-Forwarded-For"
+                passthroughBehavior: "when_no_match"
+                cacheNamespace: "nitzustoppa"
+                cacheKeyParameters:
+                - "method.request.path.proxy"
+                type: "http_proxy"
+          /{proxy+}:
+            x-amazon-apigateway-any-method:
+              parameters:
+              - name: "X-My-X-Forwarded-For"
+                in: "header"
+                required: false
+                type: "string"
+              - name: "proxy"
+                in: "path"
+                required: true
+                type: "string"
+              responses: {}
+              x-amazon-apigateway-integration:
+                httpMethod: "ANY"
+                uri: !Sub 'http://${uri}/{proxy}'
+                responses:
+                  default:
+                    statusCode: "200"
+                requestParameters:
+                  integration.request.path.proxy: "method.request.path.proxy"
+                  integration.request.header.X-Forwarded-For: "method.request.header.X-My-X-Forwarded-For"
+                passthroughBehavior: "when_no_match"
+                cacheNamespace: "lagattidogrande"
+                cacheKeyParameters:
+                - "method.request.path.proxy"
+                type: "http_proxy"
+
+
+  ApiDeployment:
+    Type: AWS::ApiGateway::Deployment
+    Properties:
+      RestApiId: !Ref ApiGatewayApi
+
+  Stage:
+    Type: AWS::ApiGateway::Stage
+    Properties:
+      StageName: 'catspin_deployed'
+      RestApiId: !Ref ApiGatewayApi
+      DeploymentId: !Ref ApiDeployment
+      MethodSettings:
+        - HttpMethod: "*"
+          ResourcePath: "/*"
+          ThrottlingRateLimit: 10
+          ThrottlingBurstLimit: 12
+
+
+Outputs:
+  Endpoint:
+    Description: "API stage endpoint"
+    Value: !Sub "https://${ApiGatewayApi}.execute-api.${AWS::Region}.amazonaws.com/catspin_deployed/"
