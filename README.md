@@ -49,16 +49,24 @@ bash catspin.sh -kill
 # Usage examples
 When *catspin* is deployed, the *catspin_deployed*-endpoint is your target, you can now direct your tools or scripts at it, e.g.
 ```
-curl https://.../catspin_deployed/wp_admin
+curl https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed/wp_admin
 ```
 Or,
 ```
-./dirsearch.py -u https://asj7iy88zd.execute-api.eu-central-1.amazonaws.com/catspin_deployed --delay=3 -F
+python3 typo3scan.py -d https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed  --vuln
+```
+Or,
+```
+vane scan --url https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed
+```
+Or,
+```
+./dirsearch.py -u https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed --delay=3 -F
 ```
 Depending on your tool of choice, you might encounter 301 redirects.
 
-The example scan from above, would look something like this on the webserver logs
+The example directory scan from above, would look something like this on the webserver logs
 
 ![](https://github.com/rootcathacking/catspin/blob/main/scan_example.png)
 
-You can also add the *catspin* endpoint to burp and use it from there, or use it creatively on various tools in the pentester arsenal.
+You can also add the *catspin* endpoint to burp and use it from there, or use it creatively in combination with various other tools in the pentester arsenal.
