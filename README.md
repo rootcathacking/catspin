@@ -3,7 +3,7 @@
 
 # What is this?
 *Catspin* is basically a AWS proxy tool, which rotates its IP every request. It is based on Amazons API Gateway and uses the 'X-Forward-To' header.
-*Catspin* can be used to for web-discovery and bypass IP-based blocks or slowdowns naturally. It can be chained with most tools from *burp-scanner* to *gobuster*, *dirsearch*, *wfuzz*, and various Typo3 or Wordpress-Scanner, etc. Basically, if you throw a HTTP Get at it, *catspin* can probably handle it.
+*Catspin* can be used to for web-discovery and bypass IP-based blocks or slowdowns naturally. It can be chained with most tools from *burp-scanner* to *gobuster*, *dirsearch*, *wfuzz*, and various Typo3 or Wordpress-Scanner, etc. Basically, if you throw a HTTP Get at it, *catspin* can probably handle it. If your interested in the accompanying Blogpost for this tool, you can find it [here](https://www.rootcat.de/blog/catspin_july22/).
 
 # Use responsible
 *Catspin* is a powerful tool which can circumvent most if not all IP-based security or intrusion detection/prevention systems. As a pentesting tool it is only to be used as such and with explicit permission by your customer/target or you own systems. Discuss the use of an IP-rotating scanning tool before your engagement and make sure to start with slow requests when conducting your test. It is always the pentesters responsibility to conduct a safe and efficient engagement.
