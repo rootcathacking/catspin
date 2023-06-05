@@ -8,7 +8,7 @@ case "$1" in
     aws cloudformation create-stack --template-body file://catspin.yaml --stack-name catspin --parameters ParameterKey=uri,ParameterValue=$uri --output text
     echo "for target: $uri"
     sleep 3
-    echo "Done
+    echo "Done"
     sleep 5
     echo "Sleeping a liddle"
     sleep 8
