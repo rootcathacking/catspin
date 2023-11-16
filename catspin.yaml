@@ -33,13 +33,13 @@ Resources:
               responses: {}
               x-amazon-apigateway-integration:
                 httpMethod: "ANY"
-                uri: !Sub 'http://${uri}/'
+                uri: !Sub '${uri}'
                 responses:
                   default:
                     statusCode: "200"
                 requestParameters:
                   integration.request.path.proxy: "method.request.path.proxy"
-                  integration.request.header.X-Forwarded-For: "method.request.header.X-My-X-Forwarded-For"
+                  integration.request.header.X-Forwarded-For: "'4.4.4.4'"
                 passthroughBehavior: "when_no_match"
                 cacheNamespace: "nitzustoppa"
                 cacheKeyParameters:
@@ -59,13 +59,13 @@ Resources:
               responses: {}
               x-amazon-apigateway-integration:
                 httpMethod: "ANY"
-                uri: !Sub 'http://${uri}/{proxy}'
+                uri: !Sub '${uri}/{proxy}'
                 responses:
                   default:
                     statusCode: "200"
-                requestParameters:
+                requestParameters: # override HTTP Request headers?
                   integration.request.path.proxy: "method.request.path.proxy"
-                  integration.request.header.X-Forwarded-For: "method.request.header.X-My-X-Forwarded-For"
+                  integration.request.header.X-Forwarded-For: "'4.4.4.4'"
                 passthroughBehavior: "when_no_match"
                 cacheNamespace: "lagattidogrande"
                 cacheKeyParameters:
