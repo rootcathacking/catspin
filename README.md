@@ -31,7 +31,9 @@ Log in to your AWS Account and navigate to Cloudformation > create stack > uploa
 ![](https://github.com/rootcathacking/catspin/blob/main/cloudformation_install.png)
 
 ## Via bash-script
+
 Run
+
 ```
 bash catspin.sh -run tageturi
 ```
