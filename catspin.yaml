@@ -63,7 +63,7 @@ Resources:
                 responses:
                   default:
                     statusCode: "200"
-                requestParameters: # override HTTP Request headers?
+                requestParameters:
                   integration.request.path.proxy: "method.request.path.proxy"
                   integration.request.header.X-Forwarded-For: "'4.4.4.4'"
                 passthroughBehavior: "when_no_match"
