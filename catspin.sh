@@ -3,14 +3,17 @@
 case "$1" in
   "-run")
     uri=$2
+    ratelimit=${3:-10}
+    burstlimit=${4:-12}
 
     echo "[+] Deploying catspin"
-    aws cloudformation create-stack --template-body file://catspin.yaml --stack-name catspin --parameters ParameterKey=uri,ParameterValue=$uri --output text
+    echo "[+] by rootcat and Ts3c" 
+    aws cloudformation create-stack --template-body file://catspin.yaml --stack-name catspin --parameters ParameterKey=uri,ParameterValue=$uri ParameterKey=ratelimit,ParameterValue=$ratelimit ParameterKey=burstlimit,ParameterValue=$burstlimit --output text
     echo "[+] Target: $uri"
     sleep 3
     echo "[+] Done"
     sleep 5
-    echo "[+] Sleeping a liddle"
+    echo "[+] Catnapping a liddle"
     sleep 8
     echo "[+] Catspin runs under: "
     aws cloudformation describe-stacks --stack-name catspin  --query Stacks[*].Outputs --output text
@@ -33,7 +36,7 @@ case "$1" in
   *)
     echo "[+] You spin my gato round right round ..."
     echo "[+] Use -run and then the uri of your target"
-    echo "[+] Use -info to get stack status and enpoint URL of catspin"
+    echo "[+] Use -info to get stack status and the enpoint url of catspin"
     echo "[+] Use -kill to delete catspin and its stack"
     exit 1
     ;;
