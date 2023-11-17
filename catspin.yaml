@@ -1,10 +1,19 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: 'Spins up catspin as Api Gateway proxy'
+Description: 'Spins up catspin using Api Gateway proxy'
 Parameters:
   uri:
     Type: String
     Description: give uri of target system plz
     Default: ''
+  ratelimit:
+    Type: String
+    Description: define the rate limit, kinda average requests, details are fuzzy
+    Default: ''
+  burstlimit:
+    Type: String
+    Description: define the burst limit, kinda maximum zooomies in second, maybe, details are fuzzy
+    Default: ''
+
 
 Resources:
   ApiGatewayApi:
@@ -87,8 +96,8 @@ Resources:
       MethodSettings:
         - HttpMethod: "*"
           ResourcePath: "/*"
-          ThrottlingRateLimit: 10
-          ThrottlingBurstLimit: 12
+          ThrottlingRateLimit: !Ref 'ratelimit'
+          ThrottlingBurstLimit: !Ref 'burstlimit'
 
 
 Outputs:
