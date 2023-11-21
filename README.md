@@ -69,9 +69,12 @@ The example directory scan from above, would look something like this on the web
 
 <video src='[https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c](https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c)' />
 
+<video src='https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c' />
 
 
 ![](https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c)
+
+![https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c](https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c)
 
 
 
