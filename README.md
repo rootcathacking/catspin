@@ -67,6 +67,6 @@ Depending on your tool of choice, you might encounter 301 redirects.
 
 The example directory scan from above, would look something like this on the webserver logs
 
-![](../poc/catspin_poc_final)
+![](https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_poc_final.mp4)
 
 You can also add the *catspin* endpoint to burp and use it from there, or use it creatively in combination with various other tools in the pentester arsenal.
