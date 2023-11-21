@@ -35,7 +35,7 @@ Run
 ```
 bash catspin.sh -run tageturi
 ```
-This calls the AWS Cli, so it is required, and it uses the account and keys which are configured. Run AWS Configure, or edit the file in the *.aws* folder, to add/change your user credentials.
+This calls the AWS Cli, so it is required, and it uses the account and keys which are configured. Run aws configure, or edit the file in the *.aws* folder, to add/change your user credentials.
 
 You can check the status of the deployed stack, or get the endpoint URL via:
 ```
