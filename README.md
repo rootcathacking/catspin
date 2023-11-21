@@ -69,6 +69,6 @@ The example directory scan from above, would look something like this on the web
 
 ![](https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_poc_final.mp4)
 
-<video src='https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_poc_final.mp4' />
+<video src='https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_for_readme.mp4' />
 
 You can also add the *catspin* endpoint to burp and use it from there, or use it creatively in combination with various other tools in the pentester arsenal.
