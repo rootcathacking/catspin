@@ -69,7 +69,7 @@ The example directory scan from above, would look something like this on the web
 
 ![](https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_poc_final.mp4)
 
-<video src='https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_for_readme.mp4' />
+<video src='https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c' />
 
 
 
