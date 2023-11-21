@@ -67,9 +67,7 @@ Depending on your tool of choice, you might encounter 301 redirects.
 
 The example directory scan from above, would look something like this on the webserver logs
 
-![](https://github.com/rootcathacking/catspin/blob/dev/poc/catspin_poc_final.mp4)
-
-<video src='https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c' />
+<video src='[https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c](https://github.com/rootcathacking/catspin/assets/73855105/f8f71407-ac1a-4817-ae68-367aa7d3851c)' />
 
 
 
