@@ -1,17 +1,16 @@
-
 ![catspin](https://i.chzbgr.com/full/7889062656/h10C497C8/cat-spinning-on-a-roomba "catspin")
 
 # What is this?
 *Catspin* is basically a AWS proxy tool, which rotates its IP with every request. It is based on Amazons API Gateway and uses the 'X-Forward-To' header.
 *Catspin* can be used to for web-discovery and bypass IP-based blocks or slowdowns naturally. It can be chained with most tools from *burp-scanner* to *gobuster*, *dirsearch*, *wfuzz*, and various Typo3 or Wordpress-Scanner, etc.    
-Basically, if you throw a HTTP Get at it, *catspin* can probably handle it. If your interested in the initial Blogpost for this tool, you can find it [here](https://www.rootcat.de/blog/catspin_july22/).
+Basically, if you throw a HTTP Get at it, *catspin* can probably handle it. If you’re interested in the initial Blogpost for this tool, you can find it [here](https://www.rootcat.de/blog/catspin_july22/).
 
 # Use responsible
 *Catspin* is a powerful tool which can circumvent most if not all IP-based security or intrusion detection/prevention systems. As a pentesting or redteaming tool it is only to be used as such and with explicit permission by your customer/target or you own systems. Discuss the use of an IP-rotating scanning tool before your engagement and make sure to start with slow requests when conducting your test. It is always the testers responsibility to conduct a safe and efficient engagement.    
 
 # Requirements
 As this is an AWS API Gateway based tool you need an AWS account with sufficient permission to create and deploy REST API Gateway.
-If you want to use the *catspin.sh* script you also need AWS keys for your account and the *aws cli* installed.
+If you want to use the *catspin.sh* script, you also need AWS keys for your account and the *aws cli* installed.
 
 * AWS Account (deploy via portal and Cloudformation)
 * AWS Cli and AWS keys (deploy with bash-script)
@@ -30,7 +29,7 @@ Delete the stack with -kill.
 
 
 ## Via portal
-Log in to your AWS Account and navigate to Cloudformation > create stack > upload a template file > chose catspin.yaml. The next step will ask you for a stackname and the target, you find your endpoint URL after the stack is created in the outputs tab.
+Log in to your AWS Account and navigate to Cloudformation > create stack > upload a template file > chose catspin.yaml. The next step will ask you for a stack name and the target, you find your endpoint URL after the stack is created in the outputs tab.
 
 ![](https://github.com/rootcathacking/catspin/blob/main/cloudformation_install.png)
 
@@ -45,7 +44,7 @@ You can check the status of the deployed stack, or get the endpoint URL via:
 ```
 bash catspin.sh -info
 ```
-If your done with scanning, you can delete the stack by running
+If your done with scanning, you can delete the stack by running:
 ```
 bash catspin.sh -kill
 ```
@@ -65,7 +64,7 @@ Or,
 ```
 Depending on your tool of choice, you might encounter 301 redirects.
 
-You can also add the *catspin* endpoint to burp and use it from there, or use it creatively in combination with various others tool or write your own script that uses it. 
+You can use catspin creatively in combination with various others tool or write your own script that utilize it. 
 
 # Catspin in action
 
@@ -74,6 +73,5 @@ https://github.com/rootcathacking/catspin/assets/73855105/445cac49-99c4-4f18-8ba
 
 # Catspin gets the zoomies
 As this uses API Gateway it utilizes rate and burst limit, see [here](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html). 
-These are set at a default and basically set how many request gets send at peak or in a set timeframe. The default will be good for most things, you can slow catspin down or get the zoomies if you change the values of the rate and burstlimit variables.           
-If catspin gets the zoomies and knocks down your server and mingvase, it is your own fault, so know what you are doing!
-
+These are set at a default and basically set how many requests gets send at peak or in a set timeframe. The default will be good for most things, you can slow catspin down or get the zoomies if you change the values of the rate and burstlimit variables.           
+If catspin gets the zoomies and knocks down your server and Ming vase, only you are to blame, so know what you are doing!
