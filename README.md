@@ -2,11 +2,12 @@
 ![catspin](https://i.chzbgr.com/full/7889062656/h10C497C8/cat-spinning-on-a-roomba "catspin")
 
 # What is this?
-*Catspin* is basically a AWS proxy tool, which rotates its IP every request. It is based on Amazons API Gateway and uses the 'X-Forward-To' header.
-*Catspin* can be used to for web-discovery and bypass IP-based blocks or slowdowns naturally. It can be chained with most tools from *burp-scanner* to *gobuster*, *dirsearch*, *wfuzz*, and various Typo3 or Wordpress-Scanner, etc. Basically, if you throw a HTTP Get at it, *catspin* can probably handle it. If your interested in the accompanying Blogpost for this tool, you can find it [here](https://www.rootcat.de/blog/catspin_july22/).
+*Catspin* is basically a AWS proxy tool, which rotates its IP with every request. It is based on Amazons API Gateway and uses the 'X-Forward-To' header.
+*Catspin* can be used to for web-discovery and bypass IP-based blocks or slowdowns naturally. It can be chained with most tools from *burp-scanner* to *gobuster*, *dirsearch*, *wfuzz*, and various Typo3 or Wordpress-Scanner, etc.    
+Basically, if you throw a HTTP Get at it, *catspin* can probably handle it. If your interested in the initial Blogpost for this tool, you can find it [here](https://www.rootcat.de/blog/catspin_july22/).
 
 # Use responsible
-*Catspin* is a powerful tool which can circumvent most if not all IP-based security or intrusion detection/prevention systems. As a pentesting tool it is only to be used as such and with explicit permission by your customer/target or you own systems. Discuss the use of an IP-rotating scanning tool before your engagement and make sure to start with slow requests when conducting your test. It is always the pentesters responsibility to conduct a safe and efficient engagement.
+*Catspin* is a powerful tool which can circumvent most if not all IP-based security or intrusion detection/prevention systems. As a pentesting or redteaming tool it is only to be used as such and with explicit permission by your customer/target or you own systems. Discuss the use of an IP-rotating scanning tool before your engagement and make sure to start with slow requests when conducting your test. It is always the testers responsibility to conduct a safe and efficient engagement.    
 
 # Requirements
 As this is an AWS API Gateway based tool you need an AWS account with sufficient permission to create and deploy REST API Gateway.
@@ -22,7 +23,10 @@ Short version:
 git clone https://github.com/rootcathacking/catspin
 bash catspin.sh -run tageturi
 ```
-Install, get url endpoint during installation or via -info, delete stack with -kill.
+
+Set it up/install it with -run.   
+Get the URL endpoint during installation or anytime via -info.   
+Delete the stack with -kill.   
 
 
 ## Via portal
@@ -55,9 +59,6 @@ Or,
 ```
 python3 typo3scan.py -d https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed  --vuln
 ```
-Or,
-```
-vane scan --url https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed
 ```
 Or,
 ```
@@ -65,11 +66,15 @@ Or,
 ```
 Depending on your tool of choice, you might encounter 301 redirects.
 
-The example directory scan from above, would look something like this on the webserver logs
+You can also add the *catspin* endpoint to burp and use it from there, or use it creatively in combination with various others tool or write your own script that uses it. 
 
-
+# Catspin in action
 
 https://github.com/rootcathacking/catspin/assets/73855105/445cac49-99c4-4f18-8ba7-f857bff385d9
 
 
-You can also add the *catspin* endpoint to burp and use it from there, or use it creatively in combination with various other tools in the pentester arsenal.
+# Catspin gets the zoomies
+As this uses API Gateway it utilizes rate and burst limit, see [here](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-request-throttling.html). 
+These are set at a default and basically set how many request gets send at peak or in a set timeframe. The default will be good for most things, you can slow catspin down or get the zoomies if you change the values of the rate and burstlimit variables.           
+If catspin gets the zoomies and knocks down your server and mingvase, it is your own fault, so know what you are doing!
+
