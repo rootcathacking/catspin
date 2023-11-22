@@ -55,7 +55,7 @@ When *catspin* is deployed, the *catspin_deployed*-endpoint is your target, you 
 ```
 curl https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed/wp_admin
 ```
-
+Or,
 ```
 python3 typo3scan.py -d https://.../execute-api.eu-central-1.amazonaws.com/catspin_deployed  --vuln
 ```
